@@ -1,6 +1,6 @@
 {
   "name": "react-beautifull-dnd-scrollzone",
-  "version": "1.0.2",
+  "version": "1.0.2.b1",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "lib/index.js",
   "scripts": {
@@ -16,10 +16,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/frontend-collective/react-dnd-scrollzone"
+    "url": "https://github.com/nosferatu500/frontend-collective-react-dnd-scrollzone"
   },
   "bugs": {
-    "url": "http://github.com/frontend-collective/react-dnd-scrollzone/issues"
+    "url": "https://github.com/nosferatu500/frontend-collective-react-dnd-scrollzone/issues"
   },
   "keywords": [
     "react",
@@ -31,11 +31,10 @@
     "polyfill",
     "auto"
   ],
-  "author": {
-    "name": "Nicholas Clawson",
-    "email": "nickclaw@gmail.com",
-    "url": "nickclaw.com"
-  },
+  "contributors": [
+    "Nicholas Clawson",
+    "Vitalii Shvetsov"
+  ],
   "license": "MIT",
   "dependencies": {
     "hoist-non-react-statics": "^3.3.2",
