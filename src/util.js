@@ -1,6 +1,4 @@
-
 export function noop() {
-
 }
 
 export function intBetween(min, max, val) {
@@ -8,7 +6,6 @@ export function intBetween(min, max, val) {
     Math.min(max, Math.max(min, val)),
   );
 }
-
 
 export function getCoords(evt) {
   if (evt.type === 'touchmove') {

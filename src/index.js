@@ -56,7 +56,6 @@ export const defaultHorizontalStrength = createHorizontalStrength(DEFAULT_BUFFER
 
 export const defaultVerticalStrength = createVerticalStrength(DEFAULT_BUFFER);
 
-
 export function createScrollingComponent(WrappedComponent) {
   class ScrollingComponent extends Component {
     // Update scaleX and scaleY every 100ms or so
@@ -81,8 +80,10 @@ export function createScrollingComponent(WrappedComponent) {
       }
     }, 100, { trailing: false })
 
+    // eslint-disable-next-line react/static-property-placement
     static displayName = `Scrolling(${getDisplayName(WrappedComponent)})`;
 
+    // eslint-disable-next-line react/static-property-placement
     static propTypes = {
       // eslint-disable-next-line react/forbid-prop-types
       dragDropManager: PropTypes.object.isRequired,
@@ -92,6 +93,7 @@ export function createScrollingComponent(WrappedComponent) {
       strengthMultiplier: PropTypes.number,
     };
 
+    // eslint-disable-next-line react/static-property-placement
     static defaultProps = {
       onScrollChange: noop,
       verticalStrength: defaultVerticalStrength,
@@ -247,6 +249,7 @@ export function createScrollingComponent(WrappedComponent) {
       return (
         <WrappedComponent
           ref={this.wrappedInstance}
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...props}
         />
       );
@@ -258,11 +261,12 @@ export function createScrollingComponent(WrappedComponent) {
 
 export default function createScrollingComponentWithConsumer(WrappedComponent) {
   const ScrollingComponent = createScrollingComponent(WrappedComponent);
-  return props => (
+  return (props) => (
     <DragDropContextConsumer>
       {({ dragDropManager }) => (
         dragDropManager === undefined
           ? null
+          // eslint-disable-next-line react/jsx-props-no-spreading
           : <ScrollingComponent {...props} dragDropManager={dragDropManager} />
       )}
     </DragDropContextConsumer>
