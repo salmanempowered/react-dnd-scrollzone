@@ -59,24 +59,6 @@ export const defaultVerticalStrength = createVerticalStrength(DEFAULT_BUFFER);
 
 export function createScrollingComponent(WrappedComponent) {
   class ScrollingComponent extends Component {
-    static displayName = `Scrolling(${getDisplayName(WrappedComponent)})`;
-
-    static propTypes = {
-      // eslint-disable-next-line react/forbid-prop-types
-      dragDropManager: PropTypes.object.isRequired,
-      onScrollChange: PropTypes.func,
-      verticalStrength: PropTypes.func,
-      horizontalStrength: PropTypes.func,
-      strengthMultiplier: PropTypes.number,
-    };
-
-    static defaultProps = {
-      onScrollChange: noop,
-      verticalStrength: defaultVerticalStrength,
-      horizontalStrength: defaultHorizontalStrength,
-      strengthMultiplier: 30,
-    };
-
     // Update scaleX and scaleY every 100ms or so
     // and start scrolling if necessary
     updateScrolling = throttle((evt) => {
@@ -98,6 +80,24 @@ export function createScrollingComponent(WrappedComponent) {
         this.startScrolling();
       }
     }, 100, { trailing: false })
+
+    static displayName = `Scrolling(${getDisplayName(WrappedComponent)})`;
+
+    static propTypes = {
+      // eslint-disable-next-line react/forbid-prop-types
+      dragDropManager: PropTypes.object.isRequired,
+      onScrollChange: PropTypes.func,
+      verticalStrength: PropTypes.func,
+      horizontalStrength: PropTypes.func,
+      strengthMultiplier: PropTypes.number,
+    };
+
+    static defaultProps = {
+      onScrollChange: noop,
+      verticalStrength: defaultVerticalStrength,
+      horizontalStrength: defaultHorizontalStrength,
+      strengthMultiplier: 30,
+    };
 
     constructor(props, ctx) {
       super(props, ctx);

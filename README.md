@@ -1,4 +1,4 @@
-# frontend-collective-react-dnd-scrollzone
+# react-beautifull-dnd-scrollzone
 
 Forked from https://github.com/azuqua/react-dnd-scrollzone with support for react-dnd@7.
 
@@ -33,7 +33,7 @@ export default class App extends Component {
 }
 ```
 
-Note: You should replace the original `div` you would like to make scrollable with the `ScrollingComponent`. 
+Note: You should replace the original `div` you would like to make scrollable with the `ScrollingComponent`.
 
 ### Easing Example
 
@@ -84,7 +84,7 @@ export default App(props) {
   );
 }
 ```
-Note: You should replace the original `div` you would like to make scrollable with the `ScrollingComponent`. 
+Note: You should replace the original `div` you would like to make scrollable with the `ScrollingComponent`.
 
 ### Virtualized Example
 
