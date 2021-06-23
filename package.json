@@ -21,6 +21,9 @@
   "bugs": {
     "url": "https://github.com/nosferatu500/react-dnd-scrollzone/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "react",
     "drag",
