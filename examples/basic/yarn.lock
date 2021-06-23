@@ -5440,10 +5440,10 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-beautifull-dnd-scrollzone@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/react-beautifull-dnd-scrollzone/-/react-beautifull-dnd-scrollzone-1.0.10.tgz#77ca761f783f722b52777837850f2e35de074c0d"
-  integrity sha512-HXady8LtxGMEnJ0M/yPGFgZMY8k+fzGb/nYY5C4e+bAfHkucYcooF8zbaiVy6Wkwcmp+l1+g3YlZH3Yc+YZCQQ==
+react-beautifull-dnd-scrollzone@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/react-beautifull-dnd-scrollzone/-/react-beautifull-dnd-scrollzone-1.0.11.tgz#d2e5d766769ce5ac1d2319a265a18581d7a8d04f"
+  integrity sha512-eS3Y6Cd/bp9T6BbH45LZvxQ4AqJxj1FthAKPFHTNTssYVwVTscj/HGGsXbaVjt9sE2UD2i5GiCQyd5EfO5AWIg==
   dependencies:
     hoist-non-react-statics "^3.3.2"
     lodash.throttle "^4.1.1"
