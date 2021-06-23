@@ -242,7 +242,6 @@ export function createScrollingComponent(WrappedComponent) {
         verticalStrength,
         horizontalStrength,
         onScrollChange,
-        dragDropManager,
 
         ...props
       } = this.props;
