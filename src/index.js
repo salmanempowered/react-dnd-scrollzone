@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash.throttle';
 import raf from 'raf';
 import getDisplayName from 'react-display-name';
-import { DragDropContextConsumer } from 'react-dnd';
+import { DndContext } from 'react-dnd';
 import hoist from 'hoist-non-react-statics';
 import { noop, intBetween, getCoords } from './util';
 
@@ -261,13 +261,13 @@ export function createScrollingComponent(WrappedComponent) {
 export default function createScrollingComponentWithConsumer(WrappedComponent) {
   const ScrollingComponent = createScrollingComponent(WrappedComponent);
   return (props) => (
-    <DragDropContextConsumer>
+    <DndContext.Consumer>
       {({ dragDropManager }) => (
         dragDropManager === undefined
           ? null
           // eslint-disable-next-line react/jsx-props-no-spreading
           : <ScrollingComponent {...props} dragDropManager={dragDropManager} />
       )}
-    </DragDropContextConsumer>
+    </DndContext.Consumer>
   );
 }
