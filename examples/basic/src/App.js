@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import withScrolling from '@nosferatu500/react-dnd-scrollzone';
@@ -9,16 +9,14 @@ const ScrollingComponent = withScrolling('div');
 
 const ITEMS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-export default class App extends Component {
-  render() {
-    return (
-      <DndProvider backend={HTML5Backend}>
-        <ScrollingComponent className="App">
-          {ITEMS.map(n => (
-            <DragItem key={n} label={`Item ${n}`} />
-          ))}
-        </ScrollingComponent>
-      </DndProvider>
-    );
-  }
-}
+const App = () => (
+  <DndProvider backend={HTML5Backend}>
+    <ScrollingComponent className="App">
+      {ITEMS.map((n) => (
+        <DragItem key={n} label={`Item ${n}`} />
+      ))}
+    </ScrollingComponent>
+  </DndProvider>
+);
+
+export default App;

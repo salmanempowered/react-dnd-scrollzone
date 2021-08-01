@@ -9,53 +9,49 @@ import { noop, intBetween, getCoords } from './util';
 
 const DEFAULT_BUFFER = 150;
 
-export function createHorizontalStrength(_buffer) {
-  return function defaultHorizontalStrength({
-    x, w, y, h,
-  }, point) {
-    const buffer = Math.min(w / 2, _buffer);
-    const inRange = point.x >= x && point.x <= x + w;
-    const inBox = inRange && point.y >= y && point.y <= y + h;
+export const createHorizontalStrength = (_buffer) => ({
+  x, w, y, h,
+}, point) => {
+  const buffer = Math.min(w / 2, _buffer);
+  const inRange = point.x >= x && point.x <= x + w;
+  const inBox = inRange && point.y >= y && point.y <= y + h;
 
-    if (inBox) {
-      if (point.x < x + buffer) {
-        return (point.x - x - buffer) / buffer;
-      }
-      if (point.x > (x + w - buffer)) {
-        return -(x + w - point.x - buffer) / buffer;
-      }
+  if (inBox) {
+    if (point.x < x + buffer) {
+      return (point.x - x - buffer) / buffer;
     }
-
-    return 0;
-  };
-}
-
-export function createVerticalStrength(_buffer) {
-  return function defaultVerticalStrength({
-    y, h, x, w,
-  }, point) {
-    const buffer = Math.min(h / 2, _buffer);
-    const inRange = point.y >= y && point.y <= y + h;
-    const inBox = inRange && point.x >= x && point.x <= x + w;
-
-    if (inBox) {
-      if (point.y < y + buffer) {
-        return (point.y - y - buffer) / buffer;
-      }
-      if (point.y > (y + h - buffer)) {
-        return -(y + h - point.y - buffer) / buffer;
-      }
+    if (point.x > (x + w - buffer)) {
+      return -(x + w - point.x - buffer) / buffer;
     }
+  }
 
-    return 0;
-  };
-}
+  return 0;
+};
+
+export const createVerticalStrength = (_buffer) => ({
+  y, h, x, w,
+}, point) => {
+  const buffer = Math.min(h / 2, _buffer);
+  const inRange = point.y >= y && point.y <= y + h;
+  const inBox = inRange && point.x >= x && point.x <= x + w;
+
+  if (inBox) {
+    if (point.y < y + buffer) {
+      return (point.y - y - buffer) / buffer;
+    }
+    if (point.y > (y + h - buffer)) {
+      return -(y + h - point.y - buffer) / buffer;
+    }
+  }
+
+  return 0;
+};
 
 export const defaultHorizontalStrength = createHorizontalStrength(DEFAULT_BUFFER);
 
 export const defaultVerticalStrength = createVerticalStrength(DEFAULT_BUFFER);
 
-export function createScrollingComponent(WrappedComponent) {
+export const createScrollingComponent = (WrappedComponent) => {
   class ScrollingComponent extends Component {
     // Update scaleX and scaleY every 100ms or so
     // and start scrolling if necessary
@@ -256,9 +252,9 @@ export function createScrollingComponent(WrappedComponent) {
   }
 
   return hoist(ScrollingComponent, WrappedComponent);
-}
+};
 
-export default function createScrollingComponentWithConsumer(WrappedComponent) {
+const createScrollingComponentWithConsumer = (WrappedComponent) => {
   const ScrollingComponent = createScrollingComponent(WrappedComponent);
   return (props) => (
     <DndContext.Consumer>
@@ -270,4 +266,6 @@ export default function createScrollingComponentWithConsumer(WrappedComponent) {
       )}
     </DndContext.Consumer>
   );
-}
+};
+
+export default createScrollingComponentWithConsumer;
