@@ -9,3 +9,12 @@ test
 .travis.yml
 CONTRIBUTING
 *.log
+
+.yarn/
+.editorconfig
+.mocharc.json
+.pnp.cjs
+.vscode/
+.yarnrc.yml
+CONTRIBUTING.md
+CHANGELOG.md

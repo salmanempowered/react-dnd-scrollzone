@@ -1,13 +1,15 @@
 {
   "name": "@nosferatu500/react-dnd-scrollzone",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "lib/index.js",
   "scripts": {
     "build": "rm -rf lib && babel src --out-dir lib",
     "lint": "eslint src --fix",
     "test": "yarn lint && mocha test",
-    "publish": "yarn test && yarn build && yarn npm publish"
+    "publish:alpha": "yarn test && yarn build && yarn npm publish --tag alpha",
+    "publish:beta": "yarn test && yarn build && yarn npm publish --tag beta",
+    "publish:release": "yarn test && yarn build && yarn npm publish"
   },
   "repository": {
     "type": "git",
