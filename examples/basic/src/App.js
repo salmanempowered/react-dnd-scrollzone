@@ -1,13 +1,13 @@
-import React from 'react';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { DndProvider } from 'react-dnd';
-import withScrolling from '@nosferatu500/react-dnd-scrollzone';
-import DragItem from './DragItem';
-import './App.css';
+import React from 'react'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
+import withScrolling from '@nosferatu500/react-dnd-scrollzone'
+import DragItem from './DragItem'
+import './App.css'
 
-const ScrollingComponent = withScrolling('div');
+const ScrollingComponent = withScrolling('div')
 
-const ITEMS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const ITEMS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const App = () => (
   <DndProvider backend={HTML5Backend}>
@@ -17,6 +17,6 @@ const App = () => (
       ))}
     </ScrollingComponent>
   </DndProvider>
-);
+)
 
-export default App;
+export default App

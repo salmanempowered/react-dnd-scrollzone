@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash.throttle';
@@ -9,7 +11,7 @@ import { noop, intBetween, getCoords } from './util';
 
 const DEFAULT_BUFFER = 150;
 
-export const createHorizontalStrength = (_buffer) => ({
+export const createHorizontalStrength = (_buffer: number) => ({
   x, w, y, h,
 }, point) => {
   const buffer = Math.min(w / 2, _buffer);
@@ -28,7 +30,7 @@ export const createHorizontalStrength = (_buffer) => ({
   return 0;
 };
 
-export const createVerticalStrength = (_buffer) => ({
+export const createVerticalStrength = (_buffer: number) => ({
   y, h, x, w,
 }, point) => {
   const buffer = Math.min(h / 2, _buffer);
@@ -51,7 +53,7 @@ export const defaultHorizontalStrength = createHorizontalStrength(DEFAULT_BUFFER
 
 export const defaultVerticalStrength = createVerticalStrength(DEFAULT_BUFFER);
 
-export const createScrollingComponent = (WrappedComponent) => {
+export const createScrollingComponent = (WrappedComponent: any) => {
   class ScrollingComponent extends Component {
     // Update scaleX and scaleY every 100ms or so
     // and start scrolling if necessary
@@ -254,9 +256,9 @@ export const createScrollingComponent = (WrappedComponent) => {
   return hoist(ScrollingComponent, WrappedComponent);
 };
 
-const createScrollingComponentWithConsumer = (WrappedComponent) => {
+const createScrollingComponentWithConsumer = (WrappedComponent: any) => {
   const ScrollingComponent = createScrollingComponent(WrappedComponent);
-  return (props) => (
+  return (props: any) => (
     <DndContext.Consumer>
       {({ dragDropManager }) => (
         dragDropManager === undefined

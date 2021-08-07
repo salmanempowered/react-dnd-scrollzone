@@ -1,7 +1,6 @@
 {
   "require": [
-    "@babel/register",
-    "test/setup"
+    "@babel/register"
   ],
   "check-leaks": true,
   "throw-deprecation": true
