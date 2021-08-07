@@ -1,6 +1,5 @@
 import React, { createRef, useEffect } from 'react';
 import throttle from 'lodash.throttle';
-import raf from 'raf';
 import { DndContext } from 'react-dnd';
 import hoist from 'hoist-non-react-statics';
 import { noop, intBetween, getCoords } from './util';
@@ -203,7 +202,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
           props.onScrollChange(newLeft, newTop);
         }
-        frame = raf(tick);
+        frame = requestAnimationFrame(tick);
       };
 
       tick();
@@ -215,7 +214,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
       scaleY = 0;
 
       if (frame) {
-        raf.cancel(frame);
+        cancelAnimationFrame(frame);
         frame = null;
       }
     }

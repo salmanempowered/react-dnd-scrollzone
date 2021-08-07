@@ -54,7 +54,6 @@
     "scroll",
     "dnd",
     "drag and drop",
-    "polyfill",
     "auto"
   ],
   "contributors": [
@@ -64,10 +63,7 @@
   "license": "MIT",
   "dependencies": {
     "hoist-non-react-statics": "^3.3.2",
-    "lodash.throttle": "^4.1.1",
-    "prop-types": "^15.7.2",
-    "raf": "^3.4.1",
-    "react-display-name": "^0.2.5"
+    "lodash.throttle": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -82,7 +78,6 @@
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/lodash.throttle": "^4.1.6",
     "@types/mocha": "^9.0.0",
-    "@types/raf": "^3.4.0",
     "@types/react": "^17.0.16",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
