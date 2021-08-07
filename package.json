@@ -1,6 +1,6 @@
 {
   "name": "@nosferatu500/react-dnd-scrollzone",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "./index.js",
   "module": "./esm/index.js",
@@ -19,7 +19,7 @@
     "**"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rimraf dist && yarn lint && yarn test && rollup -c",
     "lint": "eslint . --fix",
     "test": "yarn lint && yarn mocha",
     "mocha": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.{js,jsx,ts,tsx}'",
