@@ -1,5 +1,8 @@
 # Changelog
 
+### `2.0.0-beta.1`
+* Clean deps.
+
 ### `2.0.0-beta.0`
 * Update ESLint rules.
 * Start migration to TS.
