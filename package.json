@@ -1,6 +1,6 @@
 {
   "name": "@nosferatu500/react-dnd-scrollzone",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "./index.js",
   "module": "./esm/index.js",
@@ -87,7 +87,7 @@
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-tester": "^10.1.0",
     "chai": "^4.3.4",
-    "esbuild": "^0.12.18",
+    "esbuild": "^0.12.19",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",

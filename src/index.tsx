@@ -2,7 +2,20 @@ import React, { createRef, useEffect } from 'react';
 import throttle from 'lodash.throttle';
 import { DndContext } from 'react-dnd';
 import hoist from 'hoist-non-react-statics';
-import { noop, intBetween, getCoords } from './util';
+
+const noop = () => { };
+
+const intBetween = (min: number, max: number, val: number) => Math.floor(
+  Math.min(max, Math.max(min, val)),
+);
+
+const getCoords = (evt: any) => {
+  if (evt.type === 'touchmove') {
+    return { x: evt.changedTouches[0].clientX, y: evt.changedTouches[0].clientY };
+  }
+
+  return { x: evt.clientX, y: evt.clientY };
+};
 
 const DEFAULT_BUFFER = 150;
 

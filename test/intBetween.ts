@@ -1,5 +1,8 @@
 import { expect } from 'chai'
-import { intBetween } from '../src/util'
+
+const intBetween = (min: number, max: number, val: number) => Math.floor(
+  Math.min(max, Math.max(min, val)),
+);
 
 describe('private intBetween()', () => {
   it('should return val if it is an int between min and max', () => {
