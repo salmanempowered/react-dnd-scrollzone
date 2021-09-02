@@ -1,5 +1,12 @@
 # Changelog
 
+### `2.0.1`
+* Bump deps.
+
+
+### `2.0.0`
+* Refactor.
+
 ### `2.0.0-beta.1`
 * Clean deps.
 
