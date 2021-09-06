@@ -3,15 +3,13 @@
   "version": "2.0.1",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "./index.js",
-  "module": "./esm/index.js",
   "types": "./index.d.ts",
   "exports": {
     "./package.json": "./package.json",
-    "./": "./",
     ".": {
       "types": "./index.d.ts",
       "module": "./esm/index.js",
-      "import": "./esm/index.js",
+      "import": "./esm/index.mjs",
       "default": "./index.js"
     }
   },
@@ -20,11 +18,11 @@
   ],
   "scripts": {
     "build": "rimraf dist && yarn lint && yarn test && rollup -c",
-    "lint": "eslint . --fix",
+    "lint": "eslint --fix '*.{js,json}' '{src,test}/**/*.{ts,tsx}'",
     "test": "yarn lint && yarn mocha",
     "mocha": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.{js,jsx,ts,tsx}'",
     "postbuild": "yarn copy",
-    "copy": "rimraf dist/tests.d.ts && shx cp -r dist/*.d.ts dist/esm && shx mv dist/* dist && shx cp package.json readme.md LICENSE dist && json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.prettier=undefined; this.jest=undefined; this['lint-staged']=undefined;\" && shx echo '{\"type\":\"module\"}' > dist/esm/package.json && json -I -f dist/esm/package.json",
+    "copy": "rimraf dist/tests.d.ts && shx cp -r dist/*.d.ts dist/esm && shx mv dist/* dist && shx cp package.json readme.md LICENSE dist && json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.prettier=undefined; this.jest=undefined; this['lint-staged']=undefined;\"",
     "publish:alpha": "yarn test && yarn build && yarn npm publish --tag alpha",
     "publish:beta": "yarn test && yarn build && yarn npm publish --tag beta",
     "publish:release": "yarn test && yarn build && yarn npm publish"
@@ -66,9 +64,9 @@
     "lodash.throttle": "^4.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
+    "@babel/core": "^7.15.5",
     "@babel/plugin-transform-react-jsx": "^7.14.9",
-    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-env": "^7.15.4",
     "@babel/register": "^7.15.3",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
@@ -79,16 +77,16 @@
     "@types/lodash.throttle": "^4.1.6",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.7.10",
-    "@types/react": "^17.0.19",
+    "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
-    "acorn": "^8.4.1",
+    "acorn": "^8.5.0",
     "acorn-jsx": "^5.3.2",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-tester": "^10.1.0",
     "chai": "^4.3.4",
-    "esbuild": "^0.12.24",
+    "esbuild": "^0.12.25",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
@@ -108,7 +106,7 @@
     "shx": "^0.3.3",
     "ts-node": "^10.2.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.2"
+    "typescript": "4.3.5"
   },
   "peerDependencies": {
     "react": ">=17.0.0",

@@ -8,16 +8,9 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@nosferatu500/react-dnd-scrollzone": [
-        "./src/index.tsx"
-      ]
+      "@nosferatu500/react-dnd-scrollzone": ["./src/index.tsx"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
