@@ -39,7 +39,13 @@ function createDeclarationConfig(input, output) {
     },
     external,
     acornInjectPlugins: [jsx()],
-    plugins: [typescript({ declaration: true, outDir: output })],
+    plugins: [
+      typescript({
+        declaration: true,
+        emitDeclarationOnly: true,
+        outDir: output,
+      }),
+    ],
   }
 }
 
@@ -75,6 +81,7 @@ export default function (args) {
   return [
     createDeclarationConfig('src/index.tsx', 'dist'),
     createCommonJSConfig('src/index.tsx', 'dist/index.js'),
+    createESMConfig('src/index.tsx', 'dist/esm/index.mjs'),
     createESMConfig('src/index.tsx', 'dist/esm/index.js'),
   ]
 }

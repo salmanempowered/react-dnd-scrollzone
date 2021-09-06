@@ -1,6 +1,6 @@
 {
   "name": "@nosferatu500/react-dnd-scrollzone",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "./index.js",
   "types": "./index.d.ts",
