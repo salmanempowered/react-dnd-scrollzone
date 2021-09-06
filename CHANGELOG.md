@@ -1,6 +1,7 @@
 # Changelog
 
 ### `2.0.1`
+* Update exports.
 * Bump deps.
 
 
