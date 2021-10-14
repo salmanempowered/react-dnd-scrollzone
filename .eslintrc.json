@@ -10,12 +10,13 @@
     "prettier",
     "plugin:prettier/recommended",
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "plugin:react-hooks/recommended"
   ],
   "plugins": ["@typescript-eslint", "react", "prettier", "import", "jest"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -30,6 +31,8 @@
       "import/named": "off",
       "import/namespace": "off",
       "import/default": "off",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "error",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "no-unused-vars": [
         "warn",

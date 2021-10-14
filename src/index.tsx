@@ -87,7 +87,6 @@ export const createScrollingComponent = (WrappedComponent: any) => {
   const ScrollingComponent = (props: any) => {
     props = { ...defaultProps, ...props }
 
-    let clearMonitorSubscription: any = null
     let container: any = null
 
     const wrappedInstance = createRef()
@@ -142,7 +141,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
       // have to attach the listeners to the body
       window.document.body.addEventListener('touchmove', handleEvent)
 
-      clearMonitorSubscription = props.dragDropManager
+      let clearMonitorSubscription = props.dragDropManager
         .getMonitor()
         .subscribeToStateChange(() => handleMonitorChange())
       return () => {
@@ -255,13 +254,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
       ...other
     } = props
 
-    return (
-      <WrappedComponent
-        ref={wrappedInstance}
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        {...other}
-      />
-    )
+    return <WrappedComponent ref={wrappedInstance} {...other} />
   }
 
   return hoist(ScrollingComponent, WrappedComponent)
@@ -273,7 +266,6 @@ const createScrollingComponentWithConsumer = (WrappedComponent: any) => {
     <DndContext.Consumer>
       {({ dragDropManager }) =>
         dragDropManager === undefined ? null : (
-          // eslint-disable-next-line react/jsx-props-no-spreading
           <ScrollingComponent {...props} dragDropManager={dragDropManager} />
         )
       }

@@ -1,7 +1,6 @@
 import nodeResolve from '@rollup/plugin-node-resolve'
 import babel from '@rollup/plugin-babel'
 import esbuild from 'rollup-plugin-esbuild'
-import { sizeSnapshot } from 'rollup-plugin-size-snapshot'
 import typescript from '@rollup/plugin-typescript'
 import jsx from 'acorn-jsx'
 import path from 'path'
@@ -52,13 +51,12 @@ function createDeclarationConfig(input, output) {
 function createESMConfig(input, output) {
   return {
     input,
-    output: { file: output, format: 'esm' },
-    external,
-    plugins: [
-      nodeResolve({ extensions }),
-      getEsbuild('node12'),
-      sizeSnapshot(),
+    output: [
+      { file: `${output}.js`, format: 'esm' },
+      { file: `${output}.mjs`, format: 'esm' },
     ],
+    external,
+    plugins: [nodeResolve({ extensions }), getEsbuild('node14')],
   }
 }
 
@@ -72,7 +70,6 @@ function createCommonJSConfig(input, output) {
       nodeResolve({ extensions }),
       typescript(),
       babel(getBabelOptions({ ie: 11 })),
-      sizeSnapshot(),
     ],
   }
 }
@@ -81,7 +78,6 @@ export default function (args) {
   return [
     createDeclarationConfig('src/index.tsx', 'dist'),
     createCommonJSConfig('src/index.tsx', 'dist/index.js'),
-    createESMConfig('src/index.tsx', 'dist/esm/index.mjs'),
-    createESMConfig('src/index.tsx', 'dist/esm/index.js'),
+    createESMConfig('src/index.tsx', 'dist/esm/index'),
   ]
 }
