@@ -1488,10 +1488,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nosferatu500/react-dnd-scrollzone@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@nosferatu500/react-dnd-scrollzone/-/react-dnd-scrollzone-2.0.2.tgz#6d418d94b19e52f4e1bac8d7813e702b20c39f73"
-  integrity sha512-d5QlcwpgEG+eDJMgW8PO0wYfSWh+NLfByEhohIKJDlXjiaTEJ9kmvK+RfWZFH9GFz+ldSaFVQ1qRnvlGto4wiQ==
+"@nosferatu500/react-dnd-scrollzone@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@nosferatu500/react-dnd-scrollzone/-/react-dnd-scrollzone-2.0.3.tgz#f8c53a5c02ab722428a709615c9000b4e78b5f92"
+  integrity sha512-EpL2FlzLqBdV8///rDptItbRJbR5ykpBOxvqOCD02DlNQ4xXrkVYaiAkLCXq9aBIz+BEiy1OReTdj3O8yKtD6g==
   dependencies:
     hoist-non-react-statics "^3.3.2"
     lodash.throttle "^4.1.1"

@@ -1,7 +1,7 @@
 import React, { createRef, useEffect } from 'react'
+import hoist from 'hoist-non-react-statics'
 import throttle from 'lodash.throttle'
 import { DndContext } from 'react-dnd'
-import hoist from 'hoist-non-react-statics'
 
 const noop = () => {}
 
@@ -84,14 +84,14 @@ const defaultProps = {
 }
 
 export const createScrollingComponent = (WrappedComponent: any) => {
-  const ScrollingComponent = (props: any) => {
+  const ScrollingComponent = function (props: any) {
     props = { ...defaultProps, ...props }
 
-    let container: any = null
+    let container: any
 
     const wrappedInstance = createRef()
 
-    let frame: number | null = null
+    let frame: number | undefined
 
     let scaleX = 0
     let scaleY = 0
@@ -141,7 +141,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
       // have to attach the listeners to the body
       window.document.body.addEventListener('touchmove', handleEvent)
 
-      let clearMonitorSubscription = props.dragDropManager
+      const clearMonitorSubscription = props.dragDropManager
         .getMonitor()
         .subscribeToStateChange(() => handleMonitorChange())
       return () => {
@@ -240,7 +240,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
       if (frame) {
         cancelAnimationFrame(frame)
-        frame = null
+        frame = undefined
       }
     }
 
@@ -262,15 +262,17 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
 const createScrollingComponentWithConsumer = (WrappedComponent: any) => {
   const ScrollingComponent = createScrollingComponent(WrappedComponent)
-  return (props: any) => (
-    <DndContext.Consumer>
-      {({ dragDropManager }) =>
-        dragDropManager === undefined ? null : (
-          <ScrollingComponent {...props} dragDropManager={dragDropManager} />
-        )
-      }
-    </DndContext.Consumer>
-  )
+  return function (props: any) {
+    return (
+      <DndContext.Consumer>
+        {({ dragDropManager }) =>
+          dragDropManager === undefined ? undefined : (
+            <ScrollingComponent {...props} dragDropManager={dragDropManager} />
+          )
+        }
+      </DndContext.Consumer>
+    )
+  }
 }
 
 export default createScrollingComponentWithConsumer
