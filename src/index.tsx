@@ -84,7 +84,7 @@ const defaultProps = {
 }
 
 export const createScrollingComponent = (WrappedComponent: any) => {
-  const ScrollingComponent = function (props: any) {
+  const ScrollingComponent = (props: any) => {
     props = { ...defaultProps, ...props }
 
     let container: any
@@ -262,7 +262,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
 const createScrollingComponentWithConsumer = (WrappedComponent: any) => {
   const ScrollingComponent = createScrollingComponent(WrappedComponent)
-  return function (props: any) {
+  return (props: any) => {
     return (
       <DndContext.Consumer>
         {({ dragDropManager }) =>

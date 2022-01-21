@@ -1,5 +1,8 @@
 # Changelog
 
+### `2.0.7`
+* Bump deps.
+
 ### `2.0.1`
 * Update exports.
 * Bump deps.
