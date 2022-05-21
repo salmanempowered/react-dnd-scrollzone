@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "5.0.0"
+    "react-scripts": "5.0.1"
   },
   "dependencies": {
-    "@nosferatu500/react-dnd-scrollzone": "^2.0.6",
+    "@nosferatu500/react-dnd-scrollzone": "file:../../dist",
     "react": "^17.0.2",
     "react-dnd": "^14.0.5",
     "react-dnd-html5-backend": "^14.1.0",

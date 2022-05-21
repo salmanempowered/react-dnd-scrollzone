@@ -69,7 +69,7 @@ function createCommonJSConfig(input, output) {
     plugins: [
       nodeResolve({ extensions }),
       typescript(),
-      babel(getBabelOptions({ ie: 11 })),
+      babel(getBabelOptions({ chrome: 95 })),
     ],
   }
 }
