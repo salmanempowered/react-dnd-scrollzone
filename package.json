@@ -1,6 +1,6 @@
 {
   "name": "@nosferatu500/react-dnd-scrollzone",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -105,7 +105,7 @@
     "mocha": "^10.0.0",
     "prettier": "^2.6.2",
     "react": "^17.0.2",
-    "react-dnd": "^14.0.5",
+    "react-dnd": "14.0.4",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.74.1",
@@ -117,7 +117,7 @@
   },
   "peerDependencies": {
     "react": ">=17.0.2",
-    "react-dnd": ">=14.0.5",
+    "react-dnd": "14.0.4",
     "react-dom": ">=17.0.2"
   },
   "browserslist": {
