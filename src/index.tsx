@@ -1,5 +1,4 @@
 import React, { createRef, useEffect } from 'react'
-import hoist from 'hoist-non-react-statics'
 import throttle from 'lodash.throttle'
 import { DndContext } from 'react-dnd'
 
@@ -71,20 +70,15 @@ export const createVerticalStrength =
     return 0
   }
 
-export const defaultHorizontalStrength =
-  createHorizontalStrength(DEFAULT_BUFFER)
-
-export const defaultVerticalStrength = createVerticalStrength(DEFAULT_BUFFER)
-
 const defaultProps = {
   onScrollChange: noop,
-  verticalStrength: defaultVerticalStrength,
-  horizontalStrength: defaultHorizontalStrength,
+  verticalStrength: createVerticalStrength(DEFAULT_BUFFER),
+  horizontalStrength: createHorizontalStrength(DEFAULT_BUFFER),
   strengthMultiplier: 30,
 }
 
 export const createScrollingComponent = (WrappedComponent: any) => {
-  const ScrollingComponent = (props: any) => {
+  return (props: any) => {
     props = { ...defaultProps, ...props }
 
     let container: any
@@ -130,6 +124,16 @@ export const createScrollingComponent = (WrappedComponent: any) => {
       { trailing: false }
     )
 
+    const handleEvent = (evt: any) => {
+      if (dragging && !attached) {
+        attached = true
+        window.document.body.addEventListener('dragover', updateScrolling)
+        window.document.body.addEventListener('touchmove', updateScrolling)
+
+        updateScrolling(evt)
+      }
+    }
+
     useEffect(() => {
       container = wrappedInstance.current
 
@@ -144,6 +148,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
       const clearMonitorSubscription = props.dragDropManager
         .getMonitor()
         .subscribeToStateChange(handleMonitorChange)
+
       return () => {
         if (container && typeof container.removeEventListener === 'function') {
           container.removeEventListener('dragover', handleEvent)
@@ -154,16 +159,6 @@ export const createScrollingComponent = (WrappedComponent: any) => {
         stopScrolling()
       }
     }, [])
-
-    const handleEvent = (evt: any) => {
-      if (dragging && !attached) {
-        attached = true
-        window.document.body.addEventListener('dragover', updateScrolling)
-        window.document.body.addEventListener('touchmove', updateScrolling)
-
-        updateScrolling(evt)
-      }
-    }
 
     const handleMonitorChange = () => {
       const isDragging = props.dragDropManager.getMonitor().isDragging()
@@ -250,8 +245,6 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
     return <WrappedComponent ref={wrappedInstance} {...other} />
   }
-
-  return hoist(ScrollingComponent, WrappedComponent)
 }
 
 const createScrollingComponentWithConsumer = (WrappedComponent: any) => {
