@@ -143,7 +143,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
       const clearMonitorSubscription = props.dragDropManager
         .getMonitor()
-        .subscribeToStateChange(() => handleMonitorChange())
+        .subscribeToStateChange(handleMonitorChange)
       return () => {
         if (container && typeof container.removeEventListener === 'function') {
           container.removeEventListener('dragover', handleEvent)
@@ -157,7 +157,10 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
     const handleEvent = (evt: any) => {
       if (dragging && !attached) {
-        attach()
+        attached = true
+        window.document.body.addEventListener('dragover', updateScrolling)
+        window.document.body.addEventListener('touchmove', updateScrolling)
+
         updateScrolling(evt)
       }
     }
@@ -171,18 +174,6 @@ export const createScrollingComponent = (WrappedComponent: any) => {
         dragging = false
         stopScrolling()
       }
-    }
-
-    const attach = () => {
-      attached = true
-      window.document.body.addEventListener('dragover', updateScrolling)
-      window.document.body.addEventListener('touchmove', updateScrolling)
-    }
-
-    const detach = () => {
-      attached = false
-      window.document.body.removeEventListener('dragover', updateScrolling)
-      window.document.body.removeEventListener('touchmove', updateScrolling)
     }
 
     const startScrolling = () => {
@@ -234,7 +225,10 @@ export const createScrollingComponent = (WrappedComponent: any) => {
     }
 
     const stopScrolling = () => {
-      detach()
+      attached = false
+      window.document.body.removeEventListener('dragover', updateScrolling)
+      window.document.body.removeEventListener('touchmove', updateScrolling)
+
       scaleX = 0
       scaleY = 0
 
@@ -266,7 +260,7 @@ const createScrollingComponentWithConsumer = (WrappedComponent: any) => {
     return (
       <DndContext.Consumer>
         {({ dragDropManager }) =>
-          dragDropManager === undefined ? undefined : (
+          !dragDropManager ? undefined : (
             <ScrollingComponent {...props} dragDropManager={dragDropManager} />
           )
         }
