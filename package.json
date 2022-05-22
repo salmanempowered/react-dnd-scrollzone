@@ -105,19 +105,19 @@
     "mocha": "^10.0.0",
     "prettier": "^2.6.2",
     "react": "^17.0.2",
-    "react-dnd": "14.0.4",
+    "react-dnd": "^15.1.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.74.1",
     "rollup-plugin-esbuild": "^4.9.1",
     "shx": "^0.3.4",
-    "ts-node": "^10.7.0",
+    "ts-node": "^10.8.0",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
     "react": ">=17.0.2",
-    "react-dnd": "14.0.4",
+    "react-dnd": ">=15.1.2",
     "react-dom": ">=17.0.2"
   },
   "browserslist": {

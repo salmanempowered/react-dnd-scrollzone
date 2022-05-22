@@ -2,7 +2,7 @@ import React from 'react'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 import withScrolling from '@nosferatu500/react-dnd-scrollzone'
-import DragItem from './DragItem'
+import {DragItem} from './DragItem'
 import './App.css'
 
 const ScrollingComponent = withScrolling('div')

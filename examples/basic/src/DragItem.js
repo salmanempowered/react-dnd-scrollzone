@@ -1,18 +1,15 @@
 import React from 'react'
-import { DragSource } from 'react-dnd'
+import { useDrag } from 'react-dnd'
 import './DragItem.css'
 
-const DragItem = ({ label, dragSource }) =>
-  dragSource(<div className="DragItem">{label}</div>)
+export const DragItem = ({label}) => {
+  const [, drag] = useDrag({
+    item: { label },
+    type: "drag_item",
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging()
+    })
+  });
 
-export default DragSource(
-  'foo',
-  {
-    beginDrag() {
-      return {}
-    },
-  },
-  (connect) => ({
-    dragSource: connect.dragSource(),
-  })
-)(DragItem)
+  return <div ref={drag} className="DragItem">{label}</div>;
+};
