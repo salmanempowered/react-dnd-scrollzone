@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from 'react'
+import React, { createRef, useEffect, useRef } from 'react'
 import throttle from 'lodash.throttle'
 import { DndContext } from 'react-dnd'
 
@@ -85,7 +85,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
     const wrappedInstance = createRef()
 
-    let frame: number | undefined
+    const animationFrameID = useRef<number>(0)
 
     let scaleX = 0
     let scaleY = 0
@@ -116,7 +116,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
         scaleY = props.verticalStrength(box, coords)
 
         // start scrolling if we need to
-        if (!frame && (scaleX || scaleY)) {
+        if (!animationFrameID.current && (scaleX || scaleY)) {
           startScrolling()
         }
       },
@@ -213,7 +213,7 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
           props.onScrollChange(newLeft, newTop)
         }
-        frame = requestAnimationFrame(tick)
+        animationFrameID.current = window.requestAnimationFrame(tick)
       }
 
       tick()
@@ -227,9 +227,9 @@ export const createScrollingComponent = (WrappedComponent: any) => {
       scaleX = 0
       scaleY = 0
 
-      if (frame) {
-        cancelAnimationFrame(frame)
-        frame = undefined
+      if (animationFrameID.current) {
+        window.cancelAnimationFrame(animationFrameID.current)
+        animationFrameID.current = 0
       }
     }
 

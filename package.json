@@ -1,6 +1,6 @@
 {
   "name": "@nosferatu500/react-dnd-scrollzone",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-alpha.1",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -18,9 +18,10 @@
   ],
   "scripts": {
     "build": "rimraf dist && yarn test && rollup -c",
-    "lint": "eslint --fix '*.{js,json}' '{src,test}/**/*.{ts,tsx}'",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.{js,jsx,ts,tsx}'",
-    "postbuild": "rimraf dist/tests.d.ts && shx cp -r dist/*.d.ts dist/esm && shx mv dist/* dist && shx cp package.json readme.md LICENSE dist && json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.prettier=undefined; this.jest=undefined; this['lint-staged']=undefined;\"",
+    "prettier": "prettier --write '{src,test}/**/*.{ts, tsx}'",
+    "lint": "yarn prettier && eslint '{src,test}/**/*.{ts,tsx}'",
+    "postbuild": "rimraf dist/tests.d.ts && shx cp -r dist/*.d.ts dist/esm && shx mv dist/* dist && shx cp package.json README.md LICENSE dist && json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.prettier=undefined; this.jest=undefined; this['lint-staged']=undefined;\"",
     "publish:alpha": "yarn test && yarn build && npm publish --tag alpha",
     "publish:beta": "yarn test && yarn build && npm publish --tag beta",
     "publish:release": "yarn test && yarn build && npm publish"
