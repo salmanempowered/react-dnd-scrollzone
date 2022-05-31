@@ -1,6 +1,6 @@
 {
   "name": "@nosferatu500/react-dnd-scrollzone",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -61,13 +61,10 @@
     "Vitalii Shvetsov"
   ],
   "license": "MIT",
-  "dependencies": {
-    "lodash.throttle": "^4.1.1"
-  },
   "devDependencies": {
-    "@babel/core": "^7.18.0",
+    "@babel/core": "^7.18.2",
     "@babel/plugin-transform-react-jsx": "^7.17.12",
-    "@babel/preset-env": "^7.18.0",
+    "@babel/preset-env": "^7.18.2",
     "@babel/register": "^7.17.7",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
@@ -76,17 +73,17 @@
     "@types/chai": "^4.3.1",
     "@types/lodash.throttle": "^4.1.7",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^17.0.35",
+    "@types/node": "^17.0.36",
     "@types/react": "^17.0.45",
     "@types/react-dom": "^17.0.17",
-    "@typescript-eslint/eslint-plugin": "^5.25.0",
-    "@typescript-eslint/parser": "^5.25.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
     "acorn": "^8.7.1",
     "acorn-jsx": "^5.3.2",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-tester": "^10.1.0",
     "chai": "^4.3.6",
-    "esbuild": "^0.14.39",
+    "esbuild": "^0.14.42",
     "eslint": "^8.16.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -107,12 +104,12 @@
     "react-dnd": "^15.1.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.74.1",
+    "rollup": "^2.75.3",
     "rollup-plugin-esbuild": "^4.9.1",
     "shx": "^0.3.4",
     "ts-node": "^10.8.0",
     "tslib": "^2.4.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.2"
   },
   "peerDependencies": {
     "react": ">=17.0.2",

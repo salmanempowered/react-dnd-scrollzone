@@ -1,20 +1,21 @@
 import React, { createRef, useEffect, useRef } from 'react'
-import throttle from 'lodash.throttle'
 import { DndContext } from 'react-dnd'
 
-const noop = () => {}
+const throttle = (func: any, timeFrame: number) => {
+  let lastTime = 0
+  return (...args: any[]) => {
+    const now: any = new Date()
+    if (now - lastTime >= timeFrame) {
+      func(...args)
+      lastTime = now
+    }
+  }
+}
 
 const intBetween = (min: number, max: number, val: number) =>
   Math.floor(Math.min(max, Math.max(min, val)))
 
 const getCoords = (evt: any) => {
-  if (evt.type === 'touchmove') {
-    return {
-      x: evt.changedTouches[0].clientX,
-      y: evt.changedTouches[0].clientY,
-    }
-  }
-
   return { x: evt.clientX, y: evt.clientY }
 }
 
@@ -71,7 +72,7 @@ export const createVerticalStrength =
   }
 
 const defaultProps = {
-  onScrollChange: noop,
+  onScrollChange: () => {},
   verticalStrength: createVerticalStrength(DEFAULT_BUFFER),
   horizontalStrength: createHorizontalStrength(DEFAULT_BUFFER),
   strengthMultiplier: 30,
@@ -95,41 +96,35 @@ export const createScrollingComponent = (WrappedComponent: any) => {
 
     // Update scaleX and scaleY every 100ms or so
     // and start scrolling if necessary
-    const updateScrolling = throttle(
-      (evt) => {
-        const {
-          left: x,
-          top: y,
-          width: w,
-          height: h,
-        } = container.getBoundingClientRect()
-        const box = {
-          x,
-          y,
-          w,
-          h,
-        }
-        const coords = getCoords(evt)
+    const updateScrolling = throttle((evt: any) => {
+      const {
+        left: x,
+        top: y,
+        width: w,
+        height: h,
+      } = container.getBoundingClientRect()
+      const box = {
+        x,
+        y,
+        w,
+        h,
+      }
+      const coords = getCoords(evt)
 
-        // calculate strength
-        scaleX = props.horizontalStrength(box, coords)
-        scaleY = props.verticalStrength(box, coords)
+      // calculate strength
+      scaleX = props.horizontalStrength(box, coords)
+      scaleY = props.verticalStrength(box, coords)
 
-        // start scrolling if we need to
-        if (!animationFrameID.current && (scaleX || scaleY)) {
-          startScrolling()
-        }
-      },
-      100,
-      { trailing: false }
-    )
+      // start scrolling if we need to
+      if (!animationFrameID.current && (scaleX || scaleY)) {
+        startScrolling()
+      }
+    }, 100)
 
     const handleEvent = (evt: any) => {
       if (dragging && !attached) {
         attached = true
         window.document.body.addEventListener('dragover', updateScrolling)
-        window.document.body.addEventListener('touchmove', updateScrolling)
-
         updateScrolling(evt)
       }
     }
@@ -141,10 +136,6 @@ export const createScrollingComponent = (WrappedComponent: any) => {
         container.addEventListener('dragover', handleEvent)
       }
 
-      // touchmove events don't seem to work across siblings, so we unfortunately
-      // have to attach the listeners to the body
-      window.document.body.addEventListener('touchmove', handleEvent)
-
       const clearMonitorSubscription = props.dragDropManager
         .getMonitor()
         .subscribeToStateChange(handleMonitorChange)
@@ -153,8 +144,6 @@ export const createScrollingComponent = (WrappedComponent: any) => {
         if (container && typeof container.removeEventListener === 'function') {
           container.removeEventListener('dragover', handleEvent)
         }
-
-        window.document.body.removeEventListener('touchmove', handleEvent)
         clearMonitorSubscription()
         stopScrolling()
       }
@@ -222,7 +211,6 @@ export const createScrollingComponent = (WrappedComponent: any) => {
     const stopScrolling = () => {
       attached = false
       window.document.body.removeEventListener('dragover', updateScrolling)
-      window.document.body.removeEventListener('touchmove', updateScrolling)
 
       scaleX = 0
       scaleY = 0
