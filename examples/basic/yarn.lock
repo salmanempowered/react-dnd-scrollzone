@@ -1510,7 +1510,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nosferatu500/react-dnd-scrollzone@file:../../dist":
+"@salmanempowered/react-dnd-scrollzone@file:../../dist":
   version "3.0.0"
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":

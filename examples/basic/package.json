@@ -6,7 +6,7 @@
     "react-scripts": "5.0.1"
   },
   "dependencies": {
-    "@nosferatu500/react-dnd-scrollzone": "file:../../dist",
+    "@salmanempowered/react-dnd-scrollzone": "file:../../dist",
     "react": "^18.1.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",

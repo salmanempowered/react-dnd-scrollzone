@@ -10,7 +10,7 @@ Cross browser compatible scrolling containers for drag and drop interactions.
 import React from 'react'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
-import withScrolling, {createVerticalStrength, createHorizontalStrength} from '@nosferatu500/react-dnd-scrollzone'
+import withScrolling, {createVerticalStrength, createHorizontalStrength} from '@salmanempowered/react-dnd-scrollzone'
 import {DragItem} from './DragItem'
 import './App.css'
 
@@ -40,7 +40,7 @@ Note: You should replace the original `div` you would like to make scrollable wi
 ##### Example
 
 ```js
-import withScrolling, { createVerticalStrength, createHorizontalStrength } from '@nosferatu500/react-dnd-scrollzone';
+import withScrolling, { createVerticalStrength, createHorizontalStrength } from '@salmanempowered/react-dnd-scrollzone';
 
 const Scrollzone = withScrolling('ul');
 const vStrength = createVerticalStrength(500);
