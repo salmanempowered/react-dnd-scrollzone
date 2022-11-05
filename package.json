@@ -1,6 +1,6 @@
 {
   "name": "@salmanempowered/react-dnd-scrollzone",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A cross browser solution to scrolling during drag and drop.",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -28,7 +28,7 @@
     "publish:release": "cd dist && npm publish"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=14"
   },
   "repository": {
     "type": "git",
